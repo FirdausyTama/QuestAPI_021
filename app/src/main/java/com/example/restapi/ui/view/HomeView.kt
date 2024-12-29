@@ -161,16 +161,16 @@ fun MhsLayout(
     modifier: Modifier = Modifier,
     onDetailClick: (Mahasiswa) -> Unit,
     onDeleteClick: (Mahasiswa) -> Unit = {}
-){
-    LazyColumn (
+) {
+    LazyColumn(
         modifier = modifier,
         contentPadding = PaddingValues(16.dp),
-        verticalArrangement = Arrangement.spacedBy(16.dp)
-    ){
-        items(mahasiswa){kontak ->
+        verticalArrangement = Arrangement.spacedBy(16.dp) // Mengurangi jarak antar card
+    ) {
+        items(mahasiswa) { kontak ->
             MhsCard(
                 mahasiswa = kontak,
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxWidth()
                     .clickable { onDetailClick(kontak) },
                 onDeleteClick = {
