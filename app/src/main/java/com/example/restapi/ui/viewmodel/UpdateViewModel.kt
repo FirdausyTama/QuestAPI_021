@@ -29,17 +29,10 @@ sealed class UpdateUiState {
 class UpdateViewModel(
     private val mahasiswaRepository: MahasiswaRepository
 ) : ViewModel() {
-
-    // StateFlow to expose UI State to the composables
     private val _uiState = MutableStateFlow<UpdateUiState>(UpdateUiState.Idle)
     val uiState: StateFlow<UpdateUiState> = _uiState
-
-    // Temporary data for form inputs
     private var currentFormData: UpdateUiEvent? = null
 
-    /**
-     * Load mahasiswa data by NIM.
-     */
     fun loadMahasiswaData(nim: String) {
         _uiState.value = UpdateUiState.Loading
         viewModelScope.launch {
@@ -60,16 +53,10 @@ class UpdateViewModel(
         }
     }
 
-    /**
-     * Update the form data as user enters input.
-     */
     fun updateUiState(event: UpdateUiEvent) {
         currentFormData = event
     }
-
-    /**
-     * Submit the updated mahasiswa data.
-     */
+    
     fun updateMahasiswa() {
         val formData = currentFormData
         if (formData == null) {
