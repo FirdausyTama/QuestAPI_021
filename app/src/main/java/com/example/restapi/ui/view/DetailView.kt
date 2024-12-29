@@ -46,6 +46,7 @@ object DestinasiDetail : DestinasiNavigasi {
 fun DetailScreen(
     nim: String,
     onNavigateBack: () -> Unit,
+    onEditClick: () -> Unit,
     viewModel: DetailViewModel = viewModel(factory = PenyediaViewModel.Factory),
     modifier: Modifier = Modifier
 ) {
@@ -68,7 +69,7 @@ fun DetailScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = onNavigateBack,
+                onClick = onEditClick,
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
             ) {
